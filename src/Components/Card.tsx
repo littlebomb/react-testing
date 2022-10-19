@@ -29,10 +29,12 @@ export default function Card(){
 
     return(
         <>
-            <Input text={Name} editable={Editable} change={changeName}/>
-            <Input text={Desc} editable={Editable} change={changeDesc}/>
-            <button onClick={changeEditable}>Редактировать</button>
-            {Editable?<button onClick={()=>{cancelInput(); changeEditable()}}>Отмена</button>:null}
+            <div style={{display: "flex", flexDirection: "column", width: "250px"}}>
+                <Input text={Name} editable={Editable} change={changeName}/>
+                <Input text={Desc} editable={Editable} change={changeDesc}/>
+                <button onClick={changeEditable}>{Editable ? "Сохранить" : "Редактировать"}</button>
+                {Editable?<button onClick={()=>{cancelInput(); changeEditable()}}>Отмена</button>:null}
+            </div>
         </>
     );
 }
