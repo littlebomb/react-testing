@@ -1,22 +1,16 @@
-import React, { useState } from "react";
+import React from "react";
 
-export default function Input ({text, editable}:{text: string, editable: boolean}){
-    let [Text, setText] = useState(text);
-/*     let [PrevValue, setPrevValue] = useState("");
- */
+export default function Input ({text, editable, change}:
+    {text: string, editable: boolean, 
+        change: any}) {
+
     function editChar(event:any){
-        /* setPrevValue(Text); */
-        setText(event.target.value);
+        change(event.target.value)
     }
-
-    /* function Cancel(){
-        setText(PrevValue);
-    } */
 
     return (
         <>
-            <input type="string" value={Text} onChange={editChar} readOnly={!editable}/>
-            {/* <button onClick={Cancel}>Отмена</button> */}
+            <input type="string" value={text} onChange={editChar} readOnly={!editable}/>
         </>
     )
 }
