@@ -1,7 +1,7 @@
-import {useState, useEffect, SetStateAction} from "react"
-export default function useFetch(url: string) {
+import {useState, useEffect} from "react"
+export default function useFetch<T>(url: string) {
 
-    const [data, setData] = useState()
+    const [data, setData] = useState<T>()
 
     useEffect(()=>{
         (

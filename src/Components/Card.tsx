@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import Input from "./Input";
 
 export default function Card(){
-    let [Name, setName] = useState("Name");
-    let [Desc, setDesc] = useState("Description");
-    let [Editable, setEditable] = useState(false);
-    let [PrevName, setPrevName] = useState(Name);
-    let [PrevDesc, setPrevDesc] = useState(Desc);
+    let [name, setName] = useState("Name");
+    let [desc, setDesc] = useState("Description");
+    let [editable, setEditable] = useState(false);
+    let [prevName, setPrevName] = useState(name);
+    let [prevDesc, setPrevDesc] = useState(desc);
 
     
     function changeName(name:string){
@@ -17,23 +17,23 @@ export default function Card(){
     }
 
     function changeEditable(){
-        setEditable(!Editable);
-        setPrevName(Name);
-        setPrevDesc(Desc);
+        setEditable(!editable);
+        setPrevName(name);
+        setPrevDesc(desc);
     }
 
     function cancelInput(){
-        setName(PrevName);
-        setDesc(PrevDesc);
+        setName(prevName);
+        setDesc(prevDesc);
     }
 
     return(
         <>
             <div style={{display: "flex", flexDirection: "column", width: "250px"}}>
-                <Input text={Name} editable={Editable} change={changeName}/>
-                <Input text={Desc} editable={Editable} change={changeDesc}/>
-                <button onClick={changeEditable}>{Editable ? "Сохранить" : "Редактировать"}</button>
-                {Editable?<button onClick={()=>{cancelInput(); changeEditable()}}>Отмена</button>:null}
+                <Input text={name} editable={editable} change={changeName}/>
+                <Input text={desc} editable={editable} change={changeDesc}/>
+                <button onClick={changeEditable}>{editable ? "Сохранить" : "Редактировать"}</button>
+                {editable&&<button onClick={()=>{cancelInput(); changeEditable()}}>Отмена</button>}
             </div>
         </>
     );
